@@ -1,14 +1,25 @@
-import { Link } from "react-router-dom";
+import { useContext } from 'react';
 import logo from "../../../assets/logo.png";
+import { AuthContext } from "../../../provider/AuthProvider";
+import ActiveLink from '../../../ActiveLink/ActiveLink';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleLogOut = () =>{
+    logOut()
+    .then(() =>{})
+    .catch(error => console.log(error.message))
+  }
+
   const navList = (
     <>
-      <Link className="text-lg font-medium" to="/">Home</Link>
-      <Link className="text-lg font-medium" to="">All Toys</Link>
-      <Link className="text-lg font-medium" to="">My Toys</Link>
-      <Link className="text-lg font-medium" to="">Add A Toy</Link>
-      <Link className="text-lg font-medium" to="">Blog</Link>
+      <ActiveLink className="text-lg font-medium" to="/">Home</ActiveLink>
+      <ActiveLink className="text-lg font-medium" to="/alltoys">All Toys</ActiveLink>
+      <ActiveLink className="text-lg font-medium" to="/mytoys">My Toys</ActiveLink>
+      <ActiveLink className="text-lg font-medium" to="/addtoy">Add A Toy</ActiveLink>
+      <ActiveLink className="text-lg font-medium" to="/blog">Blog</ActiveLink>
     </>
   );
   return (
@@ -47,12 +58,18 @@ const Header = () => {
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-6">
+        <ul className="menu menu-horizontal px-1 gap-6 flex items-center my-auto">
           {navList}
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login"><button className="btn">Login</button></Link>
+
+        {
+          user ? <>
+          <img title={user?.displayName} className='w-12 h-12 rounded-full mr-3' src={user?.photoURL} alt="" />
+          <button onClick={handleLogOut} className="btn">LogOut</button>
+          </> : <Link to="/login"><button className="btn">Login</button></Link>
+        }
       </div>
     </div>
   );
