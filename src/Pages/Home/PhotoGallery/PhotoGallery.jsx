@@ -17,7 +17,7 @@ const PhotoGallery = () => {
       }, []);
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:p-0">
             <img data-aos="zoom-in-up" className='h-60 w-full' src={photo1} alt="" />
             <img data-aos="zoom-in-up" className='h-60 w-full' src={photo2} alt="" />
             <img data-aos="zoom-in-up" className='h-60 w-full' src={photo3} alt="" />

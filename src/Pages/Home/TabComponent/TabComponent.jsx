@@ -10,21 +10,21 @@ const TabComponent = () => {
 
   return (
     <Tabs selectedIndex={activeTab} onSelect={handleTabChange}>
-      <TabList className='flex justify-center gap-6'>
-        <Tab className="px-3 py-2 bg-emerald-400 text-white text-lg font-medium rounded-lg hover:bg-emerald-700 cursor-pointer">Sports Car</Tab>
-        <Tab className="px-3 py-2 bg-emerald-400 text-white text-lg font-medium rounded-lg hover:bg-emerald-700 cursor-pointer">Mini Police Car</Tab>
-        <Tab className="px-3 py-2 bg-emerald-400 text-white text-lg font-medium rounded-lg hover:bg-emerald-700 cursor-pointer">Regular Car</Tab>
+      <TabList className='flex justify-center gap-6 px-4 md:p-0'>
+        <Tab className="px-3 py-2 bg-emerald-400 text-white text-lg font-medium rounded-lg hover:bg-emerald-700 cursor-pointer text-center">Sports Car</Tab>
+        <Tab className="px-3 py-2 bg-emerald-400 text-white text-lg font-medium rounded-lg hover:bg-emerald-700 cursor-pointer text-center">Mini Police Car</Tab>
+        <Tab className="px-3 py-2 bg-emerald-400 text-white text-lg font-medium rounded-lg hover:bg-emerald-700 cursor-pointer text-center">Regular Car</Tab>
       </TabList>
 
-      <TabPanel className="mt-5">
+      <TabPanel className="mt-5 px-4 md:px-0">
         <h2>Sports Car Content</h2>
         <p>This is the Sports Car content for tab 1.</p>
       </TabPanel>
-      <TabPanel className="mt-5">
+      <TabPanel className="mt-5 px-4 md:px-0">
         <h2>Mini Police Car</h2>
         <p>This is the Mini Police Car content for tab 2.</p>
       </TabPanel>
-      <TabPanel className="mt-5">
+      <TabPanel className="mt-5 px-4 md:px-0">
         <h2>Regular Car</h2>
         <p>This is the Regular Car content for tab 3.</p>
       </TabPanel>
