@@ -12,6 +12,7 @@ const AddToy = () => {
     const photo = form.photo.value;
     const toyName = form.toyName.value;
     const sellerName = form.sellerName.value;
+    const sellerEmail = form.sellerEmail.value;
     const subCategory = form.subCategory.value;
     const price = form.price.value;
     const rating = form.rating.value;
@@ -21,6 +22,7 @@ const AddToy = () => {
       photo,
       toyName,
       sellerName,
+      sellerEmail,
       subCategory,
       price,
       rating,
@@ -94,6 +96,17 @@ const AddToy = () => {
             />
           </div>
           <div className="flex flex-col">
+            <label htmlFor="sellerEmail">Seller Email</label>
+            <input
+              className="pl-4 py-3 border-2 rounded-lg"
+              type="email"
+              name="sellerEmail"
+              defaultValue={user?.email}
+              id=""
+              required
+            />
+          </div>
+          <div className="flex flex-col">
             <label htmlFor="subCategory">SubCategory</label>
             <input
               className="pl-4 py-3 border-2 rounded-lg"
@@ -145,7 +158,7 @@ const AddToy = () => {
               id=""
               cols="30"
               rows="10"
-              placeholder="Enter Detail"
+              placeholder="Enter Details"
               required
             ></textarea>
           </div>
