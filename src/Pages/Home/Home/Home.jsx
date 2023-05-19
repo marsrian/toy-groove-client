@@ -23,7 +23,7 @@ const Home = () => {
                     <div className="flex justify-center gap-6">
                         <Tab category="Ambulance" activeTab={activeTab} setActiveTab={setActiveTab} />
                         <Tab category="Mini Police Car" activeTab={activeTab} setActiveTab={setActiveTab} />
-                        <Tab category="Regular Car" activeTab={activeTab} setActiveTab={setActiveTab} />
+                        <Tab category="Bus" activeTab={activeTab} setActiveTab={setActiveTab} />
                     </div>
                     <TabContent activeTab={activeTab} />
                 </div>

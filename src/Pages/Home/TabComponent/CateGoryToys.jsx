@@ -12,7 +12,7 @@ const CateGoryToys = ({category}) => {
                 <p>Price: ${price}</p>
                 <div className="flex items-center my-auto gap-2">Rating: <Rating className='' style={{ maxWidth: 150 }} value={rating} readOnly /></div>
                 <Link to={`/toydetails/${_id}`}>
-                    <button className='px-3 py-2 bg-emerald-400 text-white font-medium text-lg rounded-lg hover:bg-emerald-600'>View Details</button>
+                    <button className='px-3 py-2 bg-emerald-400 text-white font-medium text-lg rounded-lg hover:bg-emerald-600 mt-7'>View Details</button>
                 </Link>
             </div>
         </div>
