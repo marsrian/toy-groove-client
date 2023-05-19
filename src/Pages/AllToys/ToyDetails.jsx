@@ -27,7 +27,7 @@ const ToyDetails = () => {
         <p>Seller email: {user?.email}</p>
         <p>SubCategory: {subCategory}</p>
         <p>Price: ${price}</p>
-        <p className="flex items-center my-auto gap-2">Rating: <Rating className='' style={{ maxWidth: 150 }} value={rating} readOnly /></p>
+        <div className="flex items-center my-auto gap-2">Rating: <Rating className='' style={{ maxWidth: 150 }} value={rating} readOnly /></div>
         <p>Quantity: {quantity}</p>
         <p>Description: {description}</p>
       </div>

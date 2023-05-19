@@ -1,8 +1,11 @@
+import { useState } from "react";
 import Carousel from "../Carousel/Carousel";
 import PhotoGallery from "../PhotoGallery/PhotoGallery";
-import TabComponent from "../TabComponent/TabComponent";
+import Tab from "../TabComponent/Tab";
+import TabContent from "../TabComponent/TabContent";
 
 const Home = () => {
+    const [activeTab, setActiveTab] = useState('Ambulance');
 
     return (
         <div>
@@ -14,9 +17,16 @@ const Home = () => {
                 <PhotoGallery></PhotoGallery>
             </div>
             {/* Shop Category Section */}
-            <div className="mt-12">
+            <div className="mt-12 px-4 md:px-0">
                 <h1 className="text-2xl md:text-4xl font-bold text-center mb-8 italic">Shop By Category</h1>
-                <TabComponent />
+                <div>
+                    <div className="flex justify-center gap-6">
+                        <Tab category="Ambulance" activeTab={activeTab} setActiveTab={setActiveTab} />
+                        <Tab category="Mini Police Car" activeTab={activeTab} setActiveTab={setActiveTab} />
+                        <Tab category="Regular Car" activeTab={activeTab} setActiveTab={setActiveTab} />
+                    </div>
+                    <TabContent activeTab={activeTab} />
+                </div>
             </div>
         </div>
     );
