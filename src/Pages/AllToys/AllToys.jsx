@@ -1,41 +1,48 @@
 import { useEffect, useState } from "react";
 import ToyTable from "./ToyTable";
+import { Helmet } from "react-helmet";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const pageTitle = "All Toys";
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://toy-marketplace-server-puce.vercel.app/allToys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
       });
   }, []);
 
-  const handleSearch = () =>{
-    fetch(`http://localhost:5000/getToysName/${searchText}`)
-    .then(res => res.json())
-    .then(data =>{
-      setToys(data);
-    })
-}
+  const handleSearch = () => {
+    fetch(
+      `https://toy-marketplace-server-puce.vercel.app/getToysName/${searchText}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+      });
+  };
 
   return (
     <div>
+      <Helmet>
+        <title>{`${pageTitle} - Toy Groove`}</title>
+      </Helmet>
       {/* Search Field */}
       <div className="form-control">
-        <div className="input-group flex justify-center">
+        <div className="flex justify-center input-group">
           <input
             onChange={(e) => setSearchText(e.target.value)}
             type="text"
             placeholder="Search…"
-            className="input input-bordered w-1/3"
+            className="w-1/3 input input-bordered"
           />
           <button onClick={handleSearch} className="btn btn-square">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -50,7 +57,7 @@ const AllToys = () => {
           </button>
         </div>
       </div>
-      <div className="overflow-x-auto mt-6">
+      <div className="mt-6 overflow-x-auto">
         <table className="table w-full">
           {/* head */}
           <thead>

@@ -1,20 +1,27 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import MyToysTable from "./MyToysTable";
+import { Helmet } from "react-helmet";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
+  const pageTitle = "My Toys";
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myToys/${user?.email}`)
+    fetch(
+      `https://toy-marketplace-server-puce.vercel.app/myToys/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [user]);
 
   return (
     <div>
-      <div className="overflow-x-auto mt-6">
+      <Helmet>
+        <title>{`${pageTitle} - Toy Groove`}</title>
+      </Helmet>
+      <div className="mt-6 overflow-x-auto">
         <table className="table w-full">
           {/* head */}
           <thead>

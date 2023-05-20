@@ -3,12 +3,14 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa';
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [error, setError] = useState("");
   const { googleSignIn, signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const pageTitle = "Login";
 
   const from = location?.state?.from?.pathname || "/";
 
@@ -54,11 +56,14 @@ const Login = () => {
 
   return (
     <div>
-      <form onSubmit={handleSignIn} className="flex flex-col border-2 border-gray-400 rounded-lg p-4 md:w-1/2 mx-auto space-y-4">
+      <Helmet>
+        <title>{`${pageTitle} - Toy Groove`}</title>
+      </Helmet>
+      <form onSubmit={handleSignIn} className="flex flex-col p-4 mx-auto space-y-4 border-2 border-gray-400 rounded-lg md:w-1/2">
         <h3 className="text-2xl font-medium text-center">Login Now</h3>
         <label htmlFor="email">Email</label>
         <input
-          className="pl-4 py-3 border-2 rounded-lg"
+          className="py-3 pl-4 border-2 rounded-lg"
           type="email"
           name="email"
           id=""
@@ -67,7 +72,7 @@ const Login = () => {
         />
         <label htmlFor="password">Password</label>
         <input
-          className="pl-4 py-3 border-2 rounded-lg"
+          className="py-3 pl-4 border-2 rounded-lg"
           type="password"
           name="password"
           id=""
@@ -75,7 +80,7 @@ const Login = () => {
           required
         />
         <input
-          className="bg-emerald-500 text-lg font-medium px-3 py-2 rounded-lg text-white hover:bg-emerald-700"
+          className="px-3 py-2 text-lg font-medium text-white rounded-lg bg-emerald-500 hover:bg-emerald-700"
           type="submit"
           value="Login"
         />
@@ -88,7 +93,7 @@ const Login = () => {
         </p>
       </form>
       <div className="divider">OR</div>
-      <button onClick={handleGoogleSignIn} className="flex items-center my-auto border-2 border-gray-400 rounded-full p-3 gap-4 mx-auto">
+      <button onClick={handleGoogleSignIn} className="flex items-center gap-4 p-3 mx-auto my-auto border-2 border-gray-400 rounded-full">
         <FaGoogle></FaGoogle> Continue With Google
       </button>
     </div>

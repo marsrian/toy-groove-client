@@ -2,11 +2,13 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     const [error, setError] = useState("");
     const {createUser, logOut, updateProfileAndPhoto} = useContext(AuthContext);
     const navigate = useNavigate();
+    const pageTitle = "Register";
 
     const handleRegister = event =>{
         event.preventDefault();
@@ -59,11 +61,14 @@ const Register = () => {
 
   return (
     <div>
-      <form onSubmit={handleRegister} className="flex flex-col border-2 border-gray-400 rounded-lg p-4 md:w-1/2 mx-auto space-y-4">
+      <Helmet>
+        <title>{`${pageTitle} - Toy Groove`}</title>
+      </Helmet>
+      <form onSubmit={handleRegister} className="flex flex-col p-4 mx-auto space-y-4 border-2 border-gray-400 rounded-lg md:w-1/2">
         <h3 className="text-2xl font-medium text-center">Register Now</h3>
         <label htmlFor="name">Name</label>
         <input
-        className="pl-4 py-3 border-2 rounded-lg"
+        className="py-3 pl-4 border-2 rounded-lg"
           type="text"
           name="name"
           id=""
@@ -72,7 +77,7 @@ const Register = () => {
         />
         <label htmlFor="email">Email</label>
         <input
-        className="pl-4 py-3 border-2 rounded-lg"
+        className="py-3 pl-4 border-2 rounded-lg"
           type="email"
           name="email"
           id=""
@@ -81,7 +86,7 @@ const Register = () => {
         />
         <label htmlFor="password">Password</label>
         <input
-        className="pl-4 py-3 border-2 rounded-lg"
+        className="py-3 pl-4 border-2 rounded-lg"
           type="password"
           name="password"
           id=""
@@ -90,14 +95,14 @@ const Register = () => {
         />
         <label htmlFor="photo">PhotoURL</label>
         <input
-        className="pl-4 py-3 border-2 rounded-lg"
+        className="py-3 pl-4 border-2 rounded-lg"
           type="text"
           name="photo"
           id=""
           placeholder="Enter PhotoURL"
           required
         />
-        <input className="bg-emerald-500 text-lg font-medium px-3 py-2 rounded-lg text-white hover:bg-emerald-700" type="submit" value="Register" />
+        <input className="px-3 py-2 text-lg font-medium text-white rounded-lg bg-emerald-500 hover:bg-emerald-700" type="submit" value="Register" />
         <p className="text-center text-red-400">{error}</p>
         <p className="text-center">
             Already have an account? Please{" "}

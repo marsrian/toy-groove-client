@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AddToy = () => {
-
-    const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
+  const pageTitle = "Add A Toy";
 
   const handleAddToy = (event) => {
     event.preventDefault();
@@ -14,7 +15,7 @@ const AddToy = () => {
     const sellerName = form.sellerName.value;
     const sellerEmail = form.sellerEmail.value;
     const subCategory = form.subCategory.value;
-    const price = form.price.value;
+    const price = parseInt(form.price.value);
     const rating = form.rating.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
@@ -32,7 +33,7 @@ const AddToy = () => {
     console.log(addObj);
 
     // send data to the server
-    fetch("http://localhost:5000/toys", {
+    fetch("https://toy-marketplace-server-puce.vercel.app/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -56,15 +57,18 @@ const AddToy = () => {
 
   return (
     <div className="mt-8">
+      <Helmet>
+        <title>{`${pageTitle} - Toy Groove`}</title>
+      </Helmet>
       <form
         onSubmit={handleAddToy}
-        className="border-2 border-gray-400 rounded-lg p-4 md:w-2/3 mx-auto mb-6"
+        className="p-4 mx-auto mb-6 border-2 border-gray-400 rounded-lg md:w-2/3"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="flex flex-col">
             <label htmlFor="photo">PhotoURL</label>
             <input
-              className="pl-4 py-3 border-2 rounded-lg"
+              className="py-3 pl-4 border-2 rounded-lg"
               type="text"
               name="photo"
               id=""
@@ -75,7 +79,7 @@ const AddToy = () => {
           <div className="flex flex-col">
             <label htmlFor="toyName">Toy Name</label>
             <input
-              className="pl-4 py-3 border-2 rounded-lg"
+              className="py-3 pl-4 border-2 rounded-lg"
               type="text"
               name="toyName"
               id=""
@@ -86,7 +90,7 @@ const AddToy = () => {
           <div className="flex flex-col">
             <label htmlFor="sellerName">Seller Name</label>
             <input
-              className="pl-4 py-3 border-2 rounded-lg"
+              className="py-3 pl-4 border-2 rounded-lg"
               type="text"
               name="sellerName"
               defaultValue={user?.displayName}
@@ -98,7 +102,7 @@ const AddToy = () => {
           <div className="flex flex-col">
             <label htmlFor="sellerEmail">Seller Email</label>
             <input
-              className="pl-4 py-3 border-2 rounded-lg"
+              className="py-3 pl-4 border-2 rounded-lg"
               type="email"
               name="sellerEmail"
               defaultValue={user?.email}
@@ -108,7 +112,11 @@ const AddToy = () => {
           </div>
           <div className="flex flex-col">
             <label htmlFor="subCategory">SubCategory</label>
-            <select className="py-3 border-2 rounded-lg" name="subCategory" id="">
+            <select
+              className="py-3 border-2 rounded-lg"
+              name="subCategory"
+              id=""
+            >
               <option value="Ambulance">Ambulance</option>
               <option value="Mini Police Car">Mini Police Car</option>
               <option value="Bus">Bus</option>
@@ -117,8 +125,8 @@ const AddToy = () => {
           <div className="flex flex-col">
             <label htmlFor="price">Price</label>
             <input
-              className="pl-4 py-3 border-2 rounded-lg"
-              type="number"
+              className="py-3 pl-4 border-2 rounded-lg"
+              type="text"
               name="price"
               id=""
               placeholder="Enter Price"
@@ -128,7 +136,7 @@ const AddToy = () => {
           <div className="flex flex-col">
             <label htmlFor="rating">Rating</label>
             <input
-              className="pl-4 py-3 border-2 rounded-lg"
+              className="py-3 pl-4 border-2 rounded-lg"
               type="text"
               name="rating"
               id=""
@@ -139,7 +147,7 @@ const AddToy = () => {
           <div className="flex flex-col">
             <label htmlFor="quantity">Available Quantity</label>
             <input
-              className="pl-4 py-3 border-2 rounded-lg"
+              className="py-3 pl-4 border-2 rounded-lg"
               type="text"
               name="quantity"
               id=""
@@ -150,7 +158,7 @@ const AddToy = () => {
           <div className="flex flex-col">
             <label htmlFor="description">Detail Description</label>
             <textarea
-              className="pl-4 py-3 border-2 rounded-lg"
+              className="py-3 pl-4 border-2 rounded-lg"
               name="description"
               id=""
               cols="30"
@@ -161,7 +169,7 @@ const AddToy = () => {
           </div>
         </div>
         <input
-          className="bg-emerald-500 text-lg font-medium px-3 py-2 rounded-lg text-white hover:bg-emerald-700 w-full mt-4"
+          className="w-full px-3 py-2 mt-4 text-lg font-medium text-white rounded-lg bg-emerald-500 hover:bg-emerald-700"
           type="submit"
           value="Add a Toy"
         />

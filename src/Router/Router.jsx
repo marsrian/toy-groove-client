@@ -17,50 +17,68 @@ const router = createBrowserRouter([
     path: "/",
     element: <Main />,
     children: [
-        {
-            path: "/",
-            element: <Home />
-        },
-        {
-            path: "mytoys",
-            element: <PrivetRoute><MyToys /></PrivetRoute>
-        },
-        {
-            path: "alltoys",
-            element: <AllToys />
-        },
-        {
-            path: "toydetails/:id",
-            element: <PrivetRoute><ToyDetails /></PrivetRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
-        },
-        {
-            path: "addtoy",
-            element: <PrivetRoute><AddToy /></PrivetRoute>
-        },
-        {
-            path: "blog",
-            element: <Blog />
-        },
-        {
-            path: "login",
-            element: <Login />
-        },
-        {
-          path: "register",
-          element: <Register />
-        },
-        {
-          path: "updatetoy/:id",
-          element: <UpdateToy />,
-          loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
-        }
-    ]
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "mytoys",
+        element: (
+          <PrivetRoute>
+            <MyToys />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "alltoys",
+        element: <AllToys />,
+      },
+      {
+        path: "toydetails/:id",
+        element: (
+          <PrivetRoute>
+            <ToyDetails />
+          </PrivetRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://toy-marketplace-server-puce.vercel.app/toys/${params.id}`
+          ),
+      },
+      {
+        path: "addtoy",
+        element: (
+          <PrivetRoute>
+            <AddToy />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "blog",
+        element: <Blog />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "updatetoy/:id",
+        element: <UpdateToy />,
+        loader: ({ params }) =>
+          fetch(
+            `https://toy-marketplace-server-puce.vercel.app/toys/${params.id}`
+          ),
+      },
+    ],
   },
   {
     path: "*",
-    element: <NotFoundPage />
-  }
+    element: <NotFoundPage />,
+  },
 ]);
 
 export default router;
