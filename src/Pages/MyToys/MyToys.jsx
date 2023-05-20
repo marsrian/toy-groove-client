@@ -19,12 +19,16 @@ const MyToys = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>Seller Name</th>
+              <th>Image</th>
               <th>Toy Name</th>
+              <th>Seller Name</th>
+              <th>Seller Email</th>
               <th>Sub-category</th>
               <th>Price</th>
+              <th>Rating</th>
               <th>Available Quantity</th>
               <th>Details</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>

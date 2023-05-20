@@ -55,10 +55,10 @@ const AddToy = () => {
   };
 
   return (
-    <div>
+    <div className="mt-8">
       <form
         onSubmit={handleAddToy}
-        className="border-2 border-gray-400 rounded-lg p-4 md:w-2/3 mx-auto"
+        className="border-2 border-gray-400 rounded-lg p-4 md:w-2/3 mx-auto mb-6"
       >
         <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
           <div className="flex flex-col">
@@ -108,20 +108,17 @@ const AddToy = () => {
           </div>
           <div className="flex flex-col">
             <label htmlFor="subCategory">SubCategory</label>
-            <input
-              className="pl-4 py-3 border-2 rounded-lg"
-              type="text"
-              name="subCategory"
-              id=""
-              placeholder="Enter Sub Category"
-              required
-            />
+            <select className="py-3 border-2 rounded-lg" name="subCategory" id="">
+              <option value="Ambulance">Ambulance</option>
+              <option value="Mini Police Car">Mini Police Car</option>
+              <option value="Bus">Bus</option>
+            </select>
           </div>
           <div className="flex flex-col">
             <label htmlFor="price">Price</label>
             <input
               className="pl-4 py-3 border-2 rounded-lg"
-              type="text"
+              type="number"
               name="price"
               id=""
               placeholder="Enter Price"

@@ -3,6 +3,8 @@ import Carousel from "../Carousel/Carousel";
 import PhotoGallery from "../PhotoGallery/PhotoGallery";
 import Tab from "../TabComponent/Tab";
 import TabContent from "../TabComponent/TabContent";
+import Services from "../Services/Services";
+import AboutUs from "../AboutUs/AboutUs";
 
 const Home = () => {
     const [activeTab, setActiveTab] = useState('Ambulance');
@@ -13,7 +15,7 @@ const Home = () => {
             <Carousel></Carousel>
             {/* Photo Gallery Section */}
             <div className="mt-12">
-                <h1 className="text-2xl md:text-4xl font-bold text-center mb-8 italic">🚗Toy Car Photo Gallery🚕</h1>
+                <h1 className="text-2xl md:text-4xl font-bold text-center mb-8 italic">🚗Toy Groove Photo Gallery🚕</h1>
                 <PhotoGallery></PhotoGallery>
             </div>
             {/* Shop Category Section */}
@@ -28,6 +30,10 @@ const Home = () => {
                     <TabContent activeTab={activeTab} />
                 </div>
             </div>
+            {/* Our Services Section */}
+            <Services />
+            {/* About Us */}
+            <AboutUs />
         </div>
     );
 };

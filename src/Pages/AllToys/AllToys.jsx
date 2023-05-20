@@ -3,6 +3,7 @@ import ToyTable from "./ToyTable";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:5000/toys")
@@ -12,18 +13,26 @@ const AllToys = () => {
       });
   }, []);
 
+  const handleSearch = () =>{
+    fetch(`http://localhost:5000/getToysName/${searchText}`)
+    .then(res => res.json())
+    .then(data =>{
+      setToys(data);
+    })
+}
+
   return (
     <div>
       {/* Search Field */}
       <div className="form-control">
         <div className="input-group flex justify-center">
           <input
-            // onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) => setSearchText(e.target.value)}
             type="text"
             placeholder="Search…"
             className="input input-bordered w-1/3"
           />
-          <button className="btn btn-square">
+          <button onClick={handleSearch} className="btn btn-square">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
