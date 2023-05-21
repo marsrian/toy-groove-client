@@ -1,14 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const UpdateToy = () => {
   const toy = useLoaderData();
   const { _id, price, quantity, description } = toy;
+  const pageTitle = "My Toys - update";
 
   const handleEventUpdate = (event) => {
     event.preventDefault();
     const form = event.target;
-    const price = form.price.value;
+    const price = parseInt(form.price.value);
     const quantity = form.quantity.value;
     const description = form.description.value;
     const updateObj = { price, quantity, description };
@@ -27,7 +29,7 @@ const UpdateToy = () => {
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Event Update successfully",
+            text: "Toy Update successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });
@@ -37,6 +39,9 @@ const UpdateToy = () => {
 
   return (
     <div className="mt-8">
+      <Helmet>
+        <title>{`${pageTitle} - Toy Groove`}</title>
+      </Helmet>
       <form
         onSubmit={handleEventUpdate}
         className="p-4 mx-auto mb-6 border-2 border-gray-400 rounded-lg md:w-2/3"
@@ -46,7 +51,7 @@ const UpdateToy = () => {
             <label htmlFor="price">Price</label>
             <input
               className="py-3 pl-4 border-2 rounded-lg"
-              type="number"
+              type="text"
               name="price"
               defaultValue={price}
               id=""
@@ -81,9 +86,9 @@ const UpdateToy = () => {
           </div>
         </div>
         <input
-          className="w-full px-3 py-2 mt-4 text-lg font-medium text-white rounded-lg bg-emerald-500 hover:bg-emerald-700"
+          className="w-full px-3 py-2 mt-4 text-lg font-medium text-white rounded-lg cursor-pointer bg-emerald-500 hover:bg-emerald-700"
           type="submit"
-          value="Add a Toy"
+          value="Update"
         />
       </form>
     </div>

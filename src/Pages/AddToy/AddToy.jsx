@@ -169,7 +169,7 @@ const AddToy = () => {
           </div>
         </div>
         <input
-          className="w-full px-3 py-2 mt-4 text-lg font-medium text-white rounded-lg bg-emerald-500 hover:bg-emerald-700"
+          className="w-full px-3 py-2 mt-4 text-lg font-medium text-white rounded-lg cursor-pointer bg-emerald-500 hover:bg-emerald-700"
           type="submit"
           value="Add a Toy"
         />
