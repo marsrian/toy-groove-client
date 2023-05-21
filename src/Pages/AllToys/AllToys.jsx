@@ -30,6 +30,7 @@ const AllToys = () => {
       <Helmet>
         <title>{`${pageTitle} - Toy Groove`}</title>
       </Helmet>
+      <h1 className="mb-8 text-2xl italic font-bold text-center md:text-4xl">All Toys</h1>
       {/* Search Field */}
       <div className="form-control">
         <div className="flex justify-center input-group">
