@@ -12,7 +12,6 @@ const options = [
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
-  const [control, setControl] = useState(false);
   const pageTitle = "My Toys";
   const [selectedOption, setSelectOption] = useState(options[0]);
 
@@ -30,7 +29,7 @@ const MyToys = () => {
       .then((data) => {
         setMyToys(data);
       });
-  }, [user, control, selectedOption, pageTitle]);
+  }, [user, selectedOption, pageTitle]);
 
   return (
     <div>

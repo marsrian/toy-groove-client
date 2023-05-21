@@ -42,6 +42,7 @@ const UpdateToy = () => {
       <Helmet>
         <title>{`${pageTitle} - Toy Groove`}</title>
       </Helmet>
+      <h1 className="mb-8 text-2xl italic font-bold text-center md:text-4xl">Toy Update Form</h1>
       <form
         onSubmit={handleEventUpdate}
         className="p-4 mx-auto mb-6 border-2 border-gray-400 rounded-lg md:w-2/3"

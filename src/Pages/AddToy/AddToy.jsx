@@ -60,6 +60,7 @@ const AddToy = () => {
       <Helmet>
         <title>{`${pageTitle} - Toy Groove`}</title>
       </Helmet>
+      <h1 className="mb-8 text-2xl italic font-bold text-center md:text-4xl">Add Toy Form</h1>
       <form
         onSubmit={handleAddToy}
         className="p-4 mx-auto mb-6 border-2 border-gray-400 rounded-lg md:w-2/3"
