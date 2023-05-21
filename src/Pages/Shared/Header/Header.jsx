@@ -17,8 +17,8 @@ const Header = () => {
     <>
       <ActiveLink className="text-lg font-medium" to="/">Home</ActiveLink>
       <ActiveLink className="text-lg font-medium" to="/alltoys">All Toys</ActiveLink>
-      <ActiveLink className="text-lg font-medium" to="/mytoys">My Toys</ActiveLink>
-      <ActiveLink className="text-lg font-medium" to="/addtoy">Add A Toy</ActiveLink>
+      {user && <ActiveLink className="text-lg font-medium" to="/mytoys">My Toys</ActiveLink>}
+      {user && <ActiveLink className="text-lg font-medium" to="/addtoy">Add A Toy</ActiveLink>}
       <ActiveLink className="text-lg font-medium" to="/blog">Blog</ActiveLink>
     </>
   );
