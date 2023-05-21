@@ -16,17 +16,9 @@ const MyToys = () => {
   const pageTitle = "My Toys";
   const [selectedOption, setSelectOption] = useState(options[0]);
 
-  // useEffect(() => {
-  //   fetch(
-  //     `https://toy-marketplace-server-puce.vercel.app/myToys/${user?.email}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => setMyToys(data));
-  // }, [user]);
-
   useEffect(() => {
     <Helmet>
-      <title>Hello Doctors - {pageTitle}</title>
+      <title>{pageTitle} - Toy Groove</title>
     </Helmet>;
     const [value, type] = selectedOption.value
       .split("-")
